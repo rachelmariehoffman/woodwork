@@ -27,9 +27,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
     .state('register', {
       url: '/register',
       templateUrl: 'templates/register.html',
+      controller: 'RegisterCtrl'
     })
     .state('lobby', {
       url: '/lobby',
       templateUrl: 'templates/lobby.html',
+      controller: 'LobbyCtrl'
+    })
+    .state('schedule', {
+      url: '/schedule',
+      templateUrl: 'templates/schedule.html',
+      controller: 'SchedCtrl'
     });
 });
