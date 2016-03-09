@@ -3,8 +3,8 @@
         <div ng-repeat="game in games">
             {{game.date | date: 'MMM d'}} @ {{game.time}}
             <br> vs. {{game.opponent}}
-            <br>
-            <br>
+            <br> <span><a href="#/game/{{$index}}">Game Notes</a></span>
+            <br><br>
         </div>
         <form name="game" novalidate ng-submit="addGame(game)">
             <div class="list">
@@ -24,3 +24,19 @@
         </form>
     </ion-content>
 </ion-view>
+
+<!--
+    <ion-footer-bar align-title="left" class="bar-dark">
+        <div class="buttons">
+            <button class="button-clear" ng-click="goSchedule()">
+                <i class="icon ion-ios-calendar-outline"></i>
+            </button>
+            <button class="button-clear" ng-click="goOpponents()">
+                <i class="icon ion-ios-people"></i>
+            </button>
+            <button class="button-clear" ng-click="goStatistics()">
+                <i class="icon ion-ios-football"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
+-->

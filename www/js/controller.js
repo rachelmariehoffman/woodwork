@@ -121,15 +121,10 @@ angular.module('starter.controllers', [])
         } //end function
     ]) //end LobbyCtrl
 
-.controller('SchedCtrl', ['$scope', '$state', '$ionicHistory',
-    function($scope, $state, $ionicHistory, games) {
+.controller('SchedCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact',
+    function($scope, $state, $stateParams, $ionicHistory, gamesFact) {
+        $scope.games = gamesFact.gamesArray;
         $scope.newGame = {};
-        $scope.games = [{
-            date: 'March 2',
-            time: '7:20pm',
-            opponent: 'Raptors'
-        }
-        ];
         $scope.addGame = function(form) {
             if (!$scope.newGame.date || $scope.newGame.date === '') { 
                 alert("Please enter a game date."); 
@@ -145,26 +140,48 @@ angular.module('starter.controllers', [])
     } //end function
 ]) //end SchedCtrl
 
-.controller('GameCtrl', ['$scope', '$state', '$ionicHistory', 'games',
-    function($scope, $state, $ionicHistory, games) {
+.controller('GameCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact',
+    function($scope, $state, $stateParams, $ionicHistory, gamesFact) {
+        $scope.game = gamesFact.gamesArray[$stateParams.id];
         $scope.newNote = {};
-        $scope.notes = [{
-            goalsFor: 7,
-            goalsAgainst: 4,
-            gameNotes: 'Fast defenders, goalie gives up rebounds'
-        }
-        ];
         $scope.addNote = function(form) {
-            if (!$scope.newNote.goalsFor || $scope.newNote.goalsFor === '') { 
+            $scope.game.notes.push($scope.newNote);
+            $scope.newNote = {};
+        }; //end $scope.addNote
+    } //end function
+]); //end GameCtrl
+
+
+/*
+        $scope.getResult = function(form) {
+            if ($scope.game.notes.goalsFor > $scope.game.notes.goalsAgainst) {
+                $scope.game.notes.result = "Win";
+            } else if ($scope.game.notes.goalsFor < $scope.game.notes.goalsAgainst) {
+                $scope.game.notes.result = "Loss";
+            } else if ($scope.game.notes.goalsFor === $scope.game.notes.goalsAgainst) {
+                $scope.game.notes.result = "Tie";
+            }
+        }; //end $scope.getResult 
+*/
+
+
+/*
+.controller('GameCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact',
+    function($scope, $state, $stateParams, $ionicHistory, gamesFact) {
+        $scope.game = gamesFact.gamesArray[$stateParams.id];
+        $scope.newNote = {};
+        $scope.addNote = function(form) {
+            /* if (!$scope.newNote.goalsFor || $scope.newNote.goalsFor === '') { 
                 alert("Please enter the number of goals for."); 
             } else if (!$scope.newNote.goalsAgainst || $scope.newNote.goalsAgainst === '') { 
                 alert("Please enter the number of goals against."); 
             } else if (!$scope.newNote.gameNotes || $scope.newNote.gameNotes === '') { 
                 alert("Please enter game notes."); 
             } else {
-                $scope.notes.push($scope.newNote);
+                $scope.game.push($scope.newNote);
                 $scope.newNote = {};
             }
         }; //end $scope.addNote
     } //end function
 ]); //end GameCtrl
+*/

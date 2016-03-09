@@ -41,7 +41,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
         })
         .state('game', {
             url: '/game/{id}',
-            templateUrl: '/game.html',
+            templateUrl: 'templates/game.html',
             controller: 'GameCtrl'
         });
-});
+})
+
+.factory('gamesFact', [
+    function() {
+        var o = {
+            gamesArray: [
+                {
+                    date: 'May 3',
+                    time: '6:00pm',
+                    opponent: 'Jags',
+                    score: {
+                        result: 'Win',
+                        goalsFor: 5,
+                        goalsAgainst: 4,
+                        gameNotes: 'fast forward'
+                    },
+                },
+            ]
+        };
+        return o;
+    }
+]);

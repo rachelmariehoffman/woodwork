@@ -1,9 +1,14 @@
 <ion-view view-title="Game">
     <ion-content class="padding">
-        {{game.date[id] | date: 'MMM d'}} @ {{game.time[id]}}
-        <br> vs. {{game.opponent[id]}}
+        {{game.date | date: 'MMM d'}} @ {{game.time}}
+        <br> vs. {{game.opponent}}
+        <br>
+        <br> {{game.notes.result}}
+        <br> {{game.notes.goalsFor}} - {{game.notes.goalsAgainst}} 
+        <br> {{game.notes.gameNotes}} 
         <br>
         <br>
+
         <form name="note" novalidate ng-submit="addNote(note)">
             <div class="list">
                 <label class="item item-input">
@@ -20,5 +25,6 @@
                 Add Note
             </button>
         </form>
+        
     </ion-content>
 </ion-view>
