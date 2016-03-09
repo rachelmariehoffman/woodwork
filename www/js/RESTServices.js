@@ -24,6 +24,6 @@ angular.module('RESTConnection', [])
           'Authorization': token
         }
       });
-    };
-  }
-]);
+    }; //end service.logout
+  } //end function
+]); ///end UserService
