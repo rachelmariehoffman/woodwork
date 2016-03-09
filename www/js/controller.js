@@ -143,10 +143,22 @@ angular.module('starter.controllers', [])
 .controller('GameCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact',
     function($scope, $state, $stateParams, $ionicHistory, gamesFact) {
         $scope.game = gamesFact.gamesArray[$stateParams.id];
-        $scope.newNote = {};
+        $scope.newNote = [];
         $scope.addNote = function(form) {
-            $scope.game.notes.push($scope.newNote);
-            $scope.newNote = {};
+            if (!$scope.newNote.result || $scope.newNote.result === '') {
+                alert("Please enter the game result.");
+            } else if (!$scope.newNote.goalsFor || $scope.newNote.goalsFor === '') { 
+                alert("Please enter the number of goals for."); 
+            } else if (!$scope.newNote.goalsAgainst || $scope.newNote.goalsAgainst === '') { 
+                alert("Please enter the number of goals against."); 
+            } else if (!$scope.newNote.gameNotes || $scope.newNote.gameNotes === '') { 
+                alert("Please enter game notes."); 
+            } else {
+                if ($scope.game.notes === undefined)
+                    $scope.game.notes = [];
+                    $scope.game.notes.push($scope.newNote);
+                    $scope.newNote = [];
+            }
         }; //end $scope.addNote
     } //end function
 ]); //end GameCtrl
@@ -162,7 +174,7 @@ angular.module('starter.controllers', [])
                 $scope.game.notes.result = "Tie";
             }
         }; //end $scope.getResult 
-*/
+    
 
 
 /*
@@ -171,7 +183,10 @@ angular.module('starter.controllers', [])
         $scope.game = gamesFact.gamesArray[$stateParams.id];
         $scope.newNote = {};
         $scope.addNote = function(form) {
-            /* if (!$scope.newNote.goalsFor || $scope.newNote.goalsFor === '') { 
+            /*
+            if (!$scope.newNote.result || $scope.newNote.result === '') {
+                alert("Please enter the game result.");
+            } else if (!$scope.newNote.goalsFor || $scope.newNote.goalsFor === '') { 
                 alert("Please enter the number of goals for."); 
             } else if (!$scope.newNote.goalsAgainst || $scope.newNote.goalsAgainst === '') { 
                 alert("Please enter the number of goals against."); 

@@ -3,14 +3,20 @@
         {{game.date | date: 'MMM d'}} @ {{game.time}}
         <br> vs. {{game.opponent}}
         <br>
-        <br> {{game.notes.result}}
-        <br> {{game.notes.goalsFor}} - {{game.notes.goalsAgainst}} 
-        <br> {{game.notes.gameNotes}} 
+        <div ng-repeat="note in game.notes">
+            <br> {{note.result}}
+            <br> {{note.goalsFor}} - {{note.goalsAgainst}} 
+            <br> {{note.gameNotes}}
+            <br>
+        </div>
         <br>
         <br>
 
         <form name="note" novalidate ng-submit="addNote(note)">
             <div class="list">
+                <label class="item item-input">
+                    <input name="result" type="text" placeholder="Result (Win/Loss/Tie)" ng-model="newNote.result" required></input>
+                </label>
                 <label class="item item-input">
                     <input name="goalsFor" type="number" placeholder="Goals For" ng-model="newNote.goalsFor" required></input>
                 </label>

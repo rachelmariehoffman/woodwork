@@ -54,12 +54,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
                     date: 'May 3',
                     time: '6:00pm',
                     opponent: 'Jags',
-                    score: {
-                        result: 'Win',
-                        goalsFor: 5,
-                        goalsAgainst: 4,
-                        gameNotes: 'fast forward'
-                    },
+                    notes: [
+                        {
+                            result: 'Win',
+                            goalsFor: 5,
+                            goalsAgainst: 4,
+                            gameNotes: 'fast forward'
+                        }
+                    ]
                 },
             ]
         };
