@@ -121,9 +121,10 @@ angular.module('starter.controllers', [])
         } //end function
     ]) //end LobbyCtrl
 
-.controller('SchedCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact',
-    function($scope, $state, $stateParams, $ionicHistory, gamesFact) {
+.controller('SchedCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact', 'oppsFact',
+    function($scope, $state, $stateParams, $ionicHistory, gamesFact, oppsFact) {
         $scope.games = gamesFact.gamesArray;
+        $scope.opps = oppsFact.oppsArray;
         $scope.newGame = {};
         $scope.addGame = function(form) {
             if (!$scope.newGame.date || $scope.newGame.date === '') { 
@@ -161,7 +162,20 @@ angular.module('starter.controllers', [])
             }
         }; //end $scope.addNote
     } //end function
-]); //end GameCtrl
+]) //end GameCtrl
+
+.controller('OppsCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact', 'oppsFact',
+    function($scope, $state, $stateParams, $ionicHistory, gamesFact, oppsFact) {
+        $scope.opps = oppsFact.oppsArray;
+        $scope.opp = oppsFact.oppsArray[$stateParams.id];
+        $scope.newOpp = '';
+        $scope.addOpp = function(form) {
+            $scope.opps.push($scope.newOpp);
+            $scope.newOpp = '';
+        };
+    }
+]);
+
 
 
 /*
@@ -174,29 +188,4 @@ angular.module('starter.controllers', [])
                 $scope.game.notes.result = "Tie";
             }
         }; //end $scope.getResult 
-    
-
-
-/*
-.controller('GameCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact',
-    function($scope, $state, $stateParams, $ionicHistory, gamesFact) {
-        $scope.game = gamesFact.gamesArray[$stateParams.id];
-        $scope.newNote = {};
-        $scope.addNote = function(form) {
-            /*
-            if (!$scope.newNote.result || $scope.newNote.result === '') {
-                alert("Please enter the game result.");
-            } else if (!$scope.newNote.goalsFor || $scope.newNote.goalsFor === '') { 
-                alert("Please enter the number of goals for."); 
-            } else if (!$scope.newNote.goalsAgainst || $scope.newNote.goalsAgainst === '') { 
-                alert("Please enter the number of goals against."); 
-            } else if (!$scope.newNote.gameNotes || $scope.newNote.gameNotes === '') { 
-                alert("Please enter game notes."); 
-            } else {
-                $scope.game.push($scope.newNote);
-                $scope.newNote = {};
-            }
-        }; //end $scope.addNote
-    } //end function
-]); //end GameCtrl
 */

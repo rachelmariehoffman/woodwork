@@ -43,12 +43,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
             url: '/game/{id}',
             templateUrl: 'templates/game.html',
             controller: 'GameCtrl'
+        })
+        .state('opponents', {
+            url: '/opponents',
+            templateUrl: 'templates/opponents.html',
+            controller: 'OppsCtrl'
         });
 })
 
 .factory('gamesFact', [
     function() {
-        var o = {
+        var g = {
             gamesArray: [
                 {
                     date: 'May 3',
@@ -63,6 +68,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
                         }
                     ]
                 },
+            ]
+        };
+        return g;
+    }
+])
+
+.factory('oppsFact', [
+    function() {
+        var o = {
+            oppsArray: [
+                'Still Kickin',
+                'Nacho Mamas',
+                'Meatballs FC',
+                'Hot Shots',
+                'Raptors'
             ]
         };
         return o;

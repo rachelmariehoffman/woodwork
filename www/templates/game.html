@@ -1,6 +1,6 @@
 <ion-view view-title="Game">
     <ion-content class="padding">
-        {{game.date | date: 'MMM d'}} @ {{game.time}}
+        {{game.date | date: 'MMM d'}} @ {{game.time | date: 'h:m a'}}
         <br> vs. {{game.opponent}}
         <br>
         <div ng-repeat="note in game.notes">

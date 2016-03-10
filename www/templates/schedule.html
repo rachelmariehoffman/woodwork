@@ -1,7 +1,7 @@
 <ion-view view-title="Schedule">
     <ion-content class="padding">
         <div ng-repeat="game in games">
-            {{game.date | date: 'MMM d'}} @ {{game.time}}
+            {{game.date | date: 'MMM d'}} @ {{game.time | date: 'h:m a'}}
             <br> vs. {{game.opponent}}
             <br> <span><a href="#/game/{{$index}}">Game Notes</a></span>
             <br><br>
@@ -9,19 +9,25 @@
         <form name="game" novalidate ng-submit="addGame(game)">
             <div class="list">
                 <label class="item item-input">
-                    <input name="date" type="text" placeholder="Game Date" ng-model="newGame.date" required></input>
+                    <input name="date" type="date" placeholder="Game Date" ng-model="newGame.date" required></input>
                 </label>
                 <label class="item item-input">
-                    <input name="time" type="text" placeholder="Game Time" ng-model="newGame.time" required></input>
+                    <input name="time" type="time" placeholder="Game Time" ng-model="newGame.time" required></input>
                 </label>
-                <label class="item item-input">
-                    <input name="opponent" type="text" placeholder="Opponent" ng-model="newGame.opponent" required></input>
-                </label>
+
+                <select ng-options="team for team in opps" name="opponent" ng-model="newGame.opponent">
+                    <option value="">-- Select an opponent --</option>
+                </select>
+                <br/><br/>
+
             </div>
             <button class="button button-block button-positive" type="submit">
                 Add Game
             </button>
         </form>
+        <div ng-repeat="opp in opps">
+            {{opp.opponent}}
+        </div>
     </ion-content>
 </ion-view>
 
