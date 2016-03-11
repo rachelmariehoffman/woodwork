@@ -1,0 +1,14 @@
+<ion-view view-title="Team">
+    <ion-content class="padding">
+        {{opp}}
+        <br>
+        <br>
+        <div ng-repeat="games in filteredGames">
+            {{games.date | date: 'MMM d'}} @ {{games.time | date: 'h:mm a'}}<br>
+            <div ng-repeat="notes in games.notes">
+                {{notes.result}}: {{notes.goalsFor}} - {{notes.goalsAgainst}}<br><br>
+            </div>
+        </div>
+        </a>
+    </ion-content>
+</ion-view>

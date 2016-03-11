@@ -1,7 +1,7 @@
 <ion-view view-title="Opponents">
     <ion-content class="padding">
         <div ng-repeat="team in opps">
-            <a href="">{{team}}</a>
+            <a href="#/team/{{$index}}">{{team}}</a>
         </div>
         <form name="opp" novalidate ng-submit="addOpp(opp)">
             <div class="list">

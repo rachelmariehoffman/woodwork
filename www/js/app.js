@@ -48,6 +48,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
             url: '/opponents',
             templateUrl: 'templates/opponents.html',
             controller: 'OppsCtrl'
+        })
+        .state('team', {
+            url: '/team/{id}',
+            templateUrl: 'templates/team.html',
+            controller: 'TeamCtrl'
+        })
+        .state('statistics', {
+            url: '/statistics',
+            templateUrl: 'templates/statistics.html',
+            controller: 'GameCtrl'
         });
 })
 
@@ -58,7 +68,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
                 {
                     date: 'May 3',
                     time: '6:00pm',
-                    opponent: 'Jags',
+                    opponent: 'Raptors',
                     notes: [
                         {
                             result: 'Win',

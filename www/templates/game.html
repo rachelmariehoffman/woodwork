@@ -1,6 +1,6 @@
 <ion-view view-title="Game">
     <ion-content class="padding">
-        {{game.date | date: 'MMM d'}} @ {{game.time | date: 'h:m a'}}
+        {{game.date | date: 'MMM d'}} @ {{game.time | date: 'h:mm a'}}
         <br> vs. {{game.opponent}}
         <br>
         <div ng-repeat="note in game.notes">
@@ -12,11 +12,14 @@
         <br>
         <br>
 
-        <form name="note" novalidate ng-submit="addNote(note)">
+        <form name="note" novalidate ng-submit="addNote(note); getResult()">
             <div class="list">
-                <label class="item item-input">
-                    <input name="result" type="text" placeholder="Result (Win/Loss/Tie)" ng-model="newNote.result" required></input>
-                </label>
+                <select name="result" ng-model="newNote.result">
+                    <option value="">-- Select a result --</option>
+                    <option value="Win">Win</option>
+                    <option value="Loss">Loss</option>
+                    <option value="Tie">Tie</option>
+                </select>
                 <label class="item item-input">
                     <input name="goalsFor" type="number" placeholder="Goals For" ng-model="newNote.goalsFor" required></input>
                 </label>

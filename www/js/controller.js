@@ -143,19 +143,26 @@ angular.module('starter.controllers', [])
 
 .controller('GameCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact',
     function($scope, $state, $stateParams, $ionicHistory, gamesFact) {
+        $scope.games = gamesFact.gamesArray;
         $scope.game = gamesFact.gamesArray[$stateParams.id];
         $scope.newNote = [];
+        $scope.goalsForTotal = 8;
+        $scope.goalsAgainstTotal = 4;
+        $scope.goalsForAverage = ($scope.goalsForTotal / $scope.games.length).toFixed(2);
+        $scope.goalsAgainstAverage = ($scope.goalsAgainstTotal / $scope.games.length).toFixed(2);
         $scope.addNote = function(form) {
             if (!$scope.newNote.result || $scope.newNote.result === '') {
                 alert("Please enter the game result.");
             } else if (!$scope.newNote.goalsFor || $scope.newNote.goalsFor === '') { 
                 alert("Please enter the number of goals for."); 
             } else if (!$scope.newNote.goalsAgainst || $scope.newNote.goalsAgainst === '') { 
-                alert("Please enter the number of goals against."); 
+                alert("Please enter the number of goals against.");
             } else if (!$scope.newNote.gameNotes || $scope.newNote.gameNotes === '') { 
                 alert("Please enter game notes."); 
             } else {
                 if ($scope.game.notes === undefined)
+                    // $scope.goalsForTotal += $scope.newNote.goalsFor;
+                    // $scope.goalsAgainstTotal += $scope.newNote.goalsAgainst;
                     $scope.game.notes = [];
                     $scope.game.notes.push($scope.newNote);
                     $scope.newNote = [];
@@ -174,8 +181,20 @@ angular.module('starter.controllers', [])
             $scope.newOpp = {};
         };
     }
-]);
+])
 
+.controller('TeamCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact', 'oppsFact',
+    function($scope, $state, $stateParams, $ionicHistory, gamesFact, oppsFact) {
+        $scope.opps = oppsFact.oppsArray;
+        $scope.opp = oppsFact.oppsArray[$stateParams.id];
+        $scope.games = gamesFact.gamesArray;
+        $scope.game = gamesFact.gamesArray[$stateParams.id];
+        
+        $scope.filteredGames = $scope.games.filter(function(obj) {
+            return obj.opponent === $scope.opp;
+        }); 
+    }
+]);
 
 
 /*
