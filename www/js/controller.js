@@ -168,10 +168,10 @@ angular.module('starter.controllers', [])
     function($scope, $state, $stateParams, $ionicHistory, gamesFact, oppsFact) {
         $scope.opps = oppsFact.oppsArray;
         $scope.opp = oppsFact.oppsArray[$stateParams.id];
-        $scope.newOpp = '';
+        $scope.newOpp = {};
         $scope.addOpp = function(form) {
-            $scope.opps.push($scope.newOpp);
-            $scope.newOpp = '';
+            $scope.opps.push($scope.newOpp.name);
+            $scope.newOpp = {};
         };
     }
 ]);

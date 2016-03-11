@@ -1,12 +1,12 @@
 <ion-view view-title="Opponents">
     <ion-content class="padding">
         <div ng-repeat="team in opps">
-            {{team}}
+            <a href="">{{team}}</a>
         </div>
         <form name="opp" novalidate ng-submit="addOpp(opp)">
             <div class="list">
                 <label class="item item-input">
-                    <input name="team" type="text" placeholder="Team Name" ng-model="newOpp" required></input>
+                    <input name="team" type="text" placeholder="Team Name" ng-model="newOpp.name" required></input>
                 </label>
             </div>
             <button class="button button-block button-positive" type="submit">
