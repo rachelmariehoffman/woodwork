@@ -5,3 +5,22 @@
 .has-errors {
   border: 1px solid red;
 }
+
+.header-green {
+  background-color: #49533d;
+  color: #f1f1f2;
+}
+
+.button-green {
+  background-color: #ccd0bf;
+  color: #49533d;
+}
+
+img {
+	width: 100%;
+}
+
+.team-name {
+  font-weight: bold;
+  line-height: 200%;
+}

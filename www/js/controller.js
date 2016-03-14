@@ -161,8 +161,8 @@ angular.module('starter.controllers', [])
                 alert("Please enter game notes."); 
             } else {
                 if ($scope.game.notes === undefined)
-                    // $scope.goalsForTotal += $scope.newNote.goalsFor;
-                    // $scope.goalsAgainstTotal += $scope.newNote.goalsAgainst;
+                    $scope.goalsForTotal += $scope.newNote.goalsFor;
+                    $scope.goalsAgainstTotal += $scope.newNote.goalsAgainst;
                     $scope.game.notes = [];
                     $scope.game.notes.push($scope.newNote);
                     $scope.newNote = [];
