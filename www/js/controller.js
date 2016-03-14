@@ -148,8 +148,8 @@ angular.module('starter.controllers', [])
         $scope.newNote = [];
         $scope.goalsForTotal = 8;
         $scope.goalsAgainstTotal = 4;
-        $scope.goalsForAverage = ($scope.goalsForTotal / $scope.games.length).toFixed(2);
-        $scope.goalsAgainstAverage = ($scope.goalsAgainstTotal / $scope.games.length).toFixed(2);
+        $scope.goalsForAverage = ($scope.goalsForTotal / $scope.games.length).toFixed(1);
+        $scope.goalsAgainstAverage = ($scope.goalsAgainstTotal / $scope.games.length).toFixed(1);
         $scope.addNote = function(form) {
             if (!$scope.newNote.result || $scope.newNote.result === '') {
                 alert("Please enter the game result.");

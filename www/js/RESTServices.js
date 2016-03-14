@@ -26,4 +26,13 @@ angular.module('RESTConnection', [])
             });
         }; //end service.logout
     } //end function
-]); ///end UserService
+]) //end UserService
+
+.service('SchedService', [
+]) //end SchedService
+
+.service('GameService', [
+]) //end GameService
+
+.service('OppService', [
+]); //end OppService

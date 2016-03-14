@@ -1,12 +1,22 @@
 <ion-view view-title="Schedule">
     <ion-content class="padding">
         <img src="img/ww_logo.png">
+        <br><br>
         <div ng-repeat="game in games">
-            {{game.date | date: 'MMM d'}} @ {{game.time | date: 'h:mm a'}}
-            <br> vs. {{game.opponent}}
-            <br> <a href="#/game/{{$index}}">Game Notes</a>
+        
+            <div class="game-left">
+                {{game.date | date: 'MMM d'}}
+                <br><br>
+            </div>
+            <div class="game-right">
+                <a href="#/game/{{$index}}">{{game.time | date: 'h:mm a'}}
+                <br>vs. {{game.opponent}}</a>
+            </div>
             <br><br>
+
         </div>
+        <br>
+        <br>
         <form name="game" novalidate ng-submit="addGame(game)">
             <div class="list">
                 <label class="item item-input">

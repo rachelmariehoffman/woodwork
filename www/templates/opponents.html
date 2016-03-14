@@ -1,8 +1,10 @@
 <ion-view view-title="Opponents">
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-        <div ng-repeat="team in opps">
-            <a href="#/team/{{$index}}" class="team-name">{{team}}</a>
+        <br><br>
+        <div ng-repeat="team in opps" class="team-name">
+            <a href="#/team/{{$index}}">{{team}}</a>
+            <br><br>
         </div>
         <form name="opp" novalidate ng-submit="addOpp(opp)">
             <div class="list">

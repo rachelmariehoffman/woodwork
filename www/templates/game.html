@@ -1,10 +1,20 @@
 <ion-view view-title="Game">
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-        {{game.date | date: 'MMM d'}} @ {{game.time | date: 'h:mm a'}}
-        <br> vs. {{game.opponent}}
-        <br>
-        <div ng-repeat="note in game.notes">
+        <br><br>
+        <div class="game-left">
+            {{game.date | date: 'MMM d'}}
+            <br><br>
+        </div>
+        <div class="game-right">
+            {{game.time | date: 'h:mm a'}}
+            <br>vs. {{game.opponent}}
+        </div>
+        <br><br><br>
+        
+        <hr>
+
+        <div ng-repeat="note in game.notes" class="game-notes">
             <br> {{note.result}}
             <br> {{note.goalsFor}} - {{note.goalsAgainst}} 
             <br> {{note.gameNotes}}

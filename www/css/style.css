@@ -21,6 +21,49 @@ img {
 }
 
 .team-name {
+  text-align: center;
+}
+
+.game-left {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+
+.game-right {
+  float: right;
+  width: 50%;
+  text-align: left;
+}
+
+.game-notes {
+  text-align: center;
+}
+
+.game-result {
+  font-size: large;
+  font-style: italic;
   font-weight: bold;
+}
+
+hr {
+  width: 75%;
+}
+
+.title {
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
+  color: #49533d;
+}
+
+.subtitle {
+  font-style: italic;
+  text-decoration: underline;
   line-height: 200%;
+  color: #49533d;
+}
+
+.center {
+  text-align: center;
 }
