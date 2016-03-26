@@ -28,6 +28,9 @@ img {
   float: left;
   width: 50%;
   text-align: center;
+  color: #49533d;
+  font-style: italic;
+  font-weight: bold;
 }
 
 .game-right {
@@ -38,12 +41,15 @@ img {
 
 .game-notes {
   text-align: center;
+  width: 90%;
 }
 
 .game-result {
-  font-size: large;
+  font-size: larger;
+  color: #49533d;
   font-style: italic;
   font-weight: bold;
+  line-height: 150%;
 }
 
 hr {
@@ -59,11 +65,24 @@ hr {
 
 .subtitle {
   font-style: italic;
-  text-decoration: underline;
-  line-height: 200%;
+  color: #49533d;
+  font-size: small;
+}
+
+.card-title {
+  font-style: italic;
   color: #49533d;
 }
 
 .center {
   text-align: center;
+}
+
+.tabs-calm > .tabs, .tabs.tabs-calm {
+    background-color: #637053 !important;
+    border-color: #637053 !important;
+}
+
+.tabs-color-active-light .tab-item {
+    color: #FFF !important;
 }

@@ -1,18 +1,18 @@
 <ion-view view-title="Menu">
-    <ion-nav-buttons side="left">
+    <ion-nav-buttons side="right">
         <button class="button" ng-click="logout()">
             <i class="icon ion-log-out dark"></i>
         </button>
     </ion-nav-buttons>
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-        <button class="button button-block button-green" ui-sref="schedule">
+        <button class="button button-block button-green" ng-click="scheduleGo()">
             Schedule
         </button>
-        <button class="button button-block button-green" ui-sref="opponents">
+        <button class="button button-block button-green" ng-click="opponentsGo()">
             Opponents
         </button>
-        <button class="button button-block button-green" ui-sref="statistics">
+        <button class="button button-block button-green" ng-click="statisticsGo()">
             Statistics
         </button>
     </ion-content>

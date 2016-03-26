@@ -1,43 +1,31 @@
 <ion-view view-title="Schedule">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="logout()">
+            <i class="icon ion-log-out dark"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-        <br><br>
-        <div ng-repeat="game in games">
+
+        <div class="card" ng-repeat="game in games">
+        	<ion-list>
+        	   <a href="#/game/{{$index}}">	
+            		<ion-item>
+        				<div class="game-left">
+                            {{game.date | date: 'MMM d'}}
+                        </div>
+                        <div class="game-right">
+                            {{game.time | date: 'h:mm a'}}
+                            <br>vs. {{game.opponent}}
+                        </div>
+            		</ion-item>
+            	</a>
+        	</ion-list>
+        </div>
         
-            <div class="game-left">
-                {{game.date | date: 'MMM d'}}
-                <br><br>
-            </div>
-            <div class="game-right">
-                <a href="#/game/{{$index}}">{{game.time | date: 'h:mm a'}}
-                <br>vs. {{game.opponent}}</a>
-            </div>
-            <br><br>
+        <button class="button button-block button-green" ng-click="addGameGo()">
+            Add Game
+        </button>
 
-        </div>
-        <br>
-        <br>
-        <form name="game" novalidate ng-submit="addGame(game)">
-            <div class="list">
-                <label class="item item-input">
-                    <input name="date" type="text" onfocus="this.type='date'; this.setAttribute('onfocus','');this.blur();this.focus();" placeholder="Game Date" ng-model="newGame.date" required></input>
-                </label>
-                <label class="item item-input">
-                    <input name="time" type="text" onfocus="this.type='time'; this.setAttribute('onfocus','');this.blur();this.focus();" placeholder="Game Time" ng-model="newGame.time" required></input>
-                </label>
-
-                <select ng-options="team for team in opps" name="opponent" ng-model="newGame.opponent">
-                    <option value="">-- Select an opponent --</option>
-                </select>
-                <br/><br/>
-
-            </div>
-            <button class="button button-block button-green" type="submit">
-                Add Game
-            </button>
-        </form>
-        <div ng-repeat="opp in opps">
-            {{opp.opponent}}
-        </div>
     </ion-content>
 </ion-view>

@@ -1,39 +1,85 @@
 <ion-view view-title="Statistics">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="logout()">
+            <i class="icon ion-log-out dark"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-content class="padding">
         <img src="img/ww_logo.png">
         <br><br>
+        
+        <button class="button button-block button-green" ng-click="getStats()">
+            Get Stats
+        </button>   
+        
         <div class="center">
             <div class="title">
                 Team Statistics<br>
             </div>
-            <br>
-            <div class="subtitle">
-                Totals<br>
+            <div class="card">
+                <div class="item item-divider card-title">
+                    Totals
+                </div>
+                <div class="item item-text-wrap row">
+                    <div class="col col-50">
+                        <div class="subtitle">Goals For: <br></div>
+                        {{results.goalsForTotal}}
+                        </div>
+                    <div class="col col-50">
+                        <div class="subtitle">Goals Against: <br></div>
+                        {{results.goalsAgainstTotal}}
+                    </div>
+                </div>
             </div>
-                Goals For: {{goalsForTotal}}<br>
-                Goals Against: {{goalsAgainstTotal}}<br>
-            <br>
-            <div class="subtitle">
-                Averages<br>
+            <div class="card">
+                <div class="item item-divider card-title">
+                    Averages
+                </div>
+                <div class="item item-text-wrap row">
+                    <div class="col col-50">
+                        <div class="subtitle">Goals For: <br></div>
+                        {{results.goalsForAverage}}/game
+                    </div>
+                    <div class="col col-50">
+                        <div class="subtitle">Goals Against: <br></div>
+                        {{results.goalsAgainstAverage}}/game
+                    </div>
+                </div>
             </div>
-                Goals For: {{goalsForAverage}}<br>
-                Goals Against: {{goalsAgainstAverage}}<br>
-            <br><hr><br>
+            <br>
             <div class="title">
                 Individual Statistics<br>
             </div>
-            <br>
-            <div class="subtitle">
-                Totals<br>
+            <div class="card">
+                <div class="item item-divider card-title">
+                    Totals
+                </div>
+                <div class="item item-text-wrap row">
+                    <div class="col col-50">
+                        <div class="subtitle">Goals: <br></div>
+                        n/a
+                    </div>
+                    <div class="col col-50">
+                        <div class="subtitle">Assists: <br></div>
+                        n/a
+                    </div>
+                </div>
             </div>
-                Goals: n/a<br>
-                Assists: n/a<br>
-            <br>
-            <div class="subtitle">
-                Averages<br>
+            <div class="card">
+                <div class="item item-divider card-title">
+                    Averages
+                </div>
+                <div class="item item-text-wrap row">
+                    <div class="col col-50">
+                        <div class="subtitle">Goals: <br></div>
+                        BLANK/game
+                    </div>
+                    <div class="col col-50">
+                        <div class="subtitle">Assists: <br></div>
+                        BLANK/game
+                    </div>
+                </div>
             </div>
-                Goals: n/a<br>
-                Assists: n/a<br>
         </div>
     </ion-content>
 </ion-view>

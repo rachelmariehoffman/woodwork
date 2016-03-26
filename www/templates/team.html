@@ -1,16 +1,28 @@
 <ion-view view-title="Team">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="logout()">
+            <i class="icon ion-log-out dark"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-        <br><br>
-        <div class="title">
-            {{opp}}
+
+        <div class="card title">
+        	<ion-list>
+        		<ion-item>
+    				<div class="team-name">
+                        {{opp}}
+                    </div>
+        		</ion-item>
+        	</ion-list>
         </div>
+
         <br>
         <div class="center">
             <div ng-repeat="games in filteredGames">
                 {{games.date | date: 'MMM d'}} @ {{games.time | date: 'h:mm a'}}<br>
-                <div ng-repeat="notes in games.notes">
-                    {{notes.result}}: {{notes.goalsFor}} - {{notes.goalsAgainst}}<br><br>
+                <div ng-repeat="scores in games.score">
+                    {{scores.result}}: {{scores.goalsFor}} - {{scores.goalsAgainst}}<br><br>
                 </div>
             </div>
         </div>

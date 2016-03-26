@@ -44,6 +44,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
             templateUrl: 'templates/game.html',
             controller: 'GameCtrl'
         })
+        .state('addGame', {
+            url: '/addGame',
+            templateUrl: 'templates/addGame.html',
+            controller: 'SchedCtrl'
+        })
         .state('opponents', {
             url: '/opponents',
             templateUrl: 'templates/opponents.html',
@@ -71,16 +76,35 @@ angular.module('starter', ['ionic', 'starter.controllers', 'RESTConnection'])
                     opponent: 'Raptors',
                     notes: [
                         {
+                            gameNotes: 'fast forward'
+                        }
+                    ],
+                    outcome: [
+                        {
                             result: 'Win',
                             goalsFor: 5,
                             goalsAgainst: 4,
-                            gameNotes: 'fast forward'
                         }
                     ]
                 },
             ]
         };
         return g;
+    }
+])
+
+.factory('resultsFact', [
+    function() {
+        var r = {
+            resultsArray: [
+                {
+                    goalsForTotal: 5,
+                    goalsAgainstTotal: 4,
+                    outcomesTotal: 1
+                }
+            ]
+        };
+        return r;
     }
 ])
 

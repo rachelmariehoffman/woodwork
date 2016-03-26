@@ -1,14 +1,30 @@
 <ion-view view-title="Opponents">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="logout()">
+            <i class="icon ion-log-out dark"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-        <br><br>
-        <div ng-repeat="team in opps" class="team-name">
-            <a href="#/team/{{$index}}">{{team}}</a>
-            <br><br>
+
+        <div class="card title" ng-repeat="team in opps">
+        	<ion-list>
+            	<a href="#/team/{{$index}}">	
+            		<ion-item>
+        				<div class="team-name">
+                            {{team}}
+                        </div>
+            		</ion-item>
+            	</a>
+        	</ion-list>
         </div>
+
+        <hr>
+
         <form name="opp" novalidate ng-submit="addOpp(opp)">
-            <div class="list">
-                <label class="item item-input">
+            <div class="list card">
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-people"></i>
                     <input name="team" type="text" placeholder="Team Name" ng-model="newOpp.name" required></input>
                 </label>
             </div>

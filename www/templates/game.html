@@ -1,43 +1,70 @@
 <ion-view view-title="Game">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="logout()">
+            <i class="icon ion-log-out dark"></i>
+        </button>
+    </ion-nav-buttons>    
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-        <br><br>
-        <div class="game-left">
-            {{game.date | date: 'MMM d'}}
-            <br><br>
+
+        <div class="card">
+        	<ion-list>
+        		<ion-item>
+    				<div class="game-left">
+                        {{game.date | date: 'MMM d'}}
+                    </div>
+                    <div class="game-right">
+                        {{game.time | date: 'h:mm a'}}
+                        <br>vs. {{game.opponent}}
+                    </div>
+        		</ion-item>
+        	</ion-list>
         </div>
-        <div class="game-right">
-            {{game.time | date: 'h:mm a'}}
-            <br>vs. {{game.opponent}}
-        </div>
-        <br><br><br>
         
-        <hr>
+        <div ng-repeat="outcome in game.outcome" class="game-notes">
+            <br> <div class="game-result">{{outcome.result}}</div>
+            {{outcome.goalsFor}} - {{outcome.goalsAgainst}}
+        </div>
 
         <div ng-repeat="note in game.notes" class="game-notes">
-            <br> {{note.result}}
-            <br> {{note.goalsFor}} - {{note.goalsAgainst}} 
             <br> {{note.gameNotes}}
             <br>
         </div>
+        
         <br>
-        <br>
+        
+        <form name="outcome" novalidate ng-submit="addOutcome(outcome)" id="outcome" ng-hide="outcomeHide">
+            <div class="list card">
+                <label class="item item-select item-icon-left">
+                    <div class="input-label">
+                        <i class="icon ion-trophy"></i>
+                        Select a Result
+                    </div>
+                    <select ng-model="newOutcome.result" ng-init="$first">
+                        <option value="{{item.state}}" ng-selected="$first">
+                        <option value="Win">Win</option>
+                        <option value="Loss">Loss</option>
+                        <option value="Tie">Tie</option>
+                    </select>
+                </label>
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-football"></i>
+                    <input name="goalsFor" type="number" placeholder="Goals For" ng-model="newOutcome.goalsFor" required></input>
+                </label>
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-football"></i>
+                    <input name="goalsAgainst" type="number" placeholder="Goals Against" ng-model="newOutcome.goalsAgainst" required></input>
+                </label>
+            </div>
+            <button class="button button-block button-green" type="submit">
+                Add Outcome
+            </button>
+        </form>
 
-        <form name="note" novalidate ng-submit="addNote(note); getResult()">
-            <div class="list">
-                <select name="result" ng-model="newNote.result">
-                    <option value="">-- Select a result --</option>
-                    <option value="Win">Win</option>
-                    <option value="Loss">Loss</option>
-                    <option value="Tie">Tie</option>
-                </select>
-                <label class="item item-input">
-                    <input name="goalsFor" type="number" placeholder="Goals For" ng-model="newNote.goalsFor" required></input>
-                </label>
-                <label class="item item-input">
-                    <input name="goalsAgainst" type="number" placeholder="Goals Against" ng-model="newNote.goalsAgainst" required></input>
-                </label>
-                <label class="item item-input">
+        <form name="note" novalidate ng-submit="addNote(note)" ng-show="outcomeHide">
+            <div class="list card">
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-compose"></i>
                     <input name="gameNotes" type="text" placeholder="Game Notes" ng-model="newNote.gameNotes" required></input>
                 </label>
             </div>
@@ -45,5 +72,6 @@
                 Add Note
             </button>
         </form>
+
     </ion-content>
 </ion-view>
