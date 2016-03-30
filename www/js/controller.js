@@ -163,6 +163,11 @@ angular.module('starter.controllers', [])
         $scope.newOutcome = [];
         
         $scope.results = resultsFact.resultsArray;
+        $scope.goalsForTotal = 20;
+        $scope.goalsAgainstTotal = 10;
+        $scope.outcomesTotal = 3;
+        $scope.goalsForAverage = ($scope.goalsForTotal / $scope.outcomesTotal).toFixed(1);
+        $scope.goalsAgainstAverage = ($scope.goalsAgainstTotal / $scope.outcomesTotal).toFixed(1);
         
         
         $scope.logout = function() {
@@ -197,68 +202,87 @@ angular.module('starter.controllers', [])
             }
         }; //end $scope.addNote
         
+        // $scope.addStats = function() {
+        //     $scope.results.goalsForTotal = 100;
+        //     // $scope.goalsForTotal += $scope.newOutcome.goalsFor;
+        //     // $scope.goalsAgainstTotal += $scope.newOutcome.goalsAgainst;
+        //     // $scope.outcomesTotal ++;  
+        // };
+        
         $scope.addOutcome = function(outcome) {
-            if (!$scope.newOutcome.result || $scope.newOutcome.result === '') {
-                alert("Please enter the game result.");
-            } else if (!$scope.newOutcome.goalsFor || $scope.newOutcome.goalsFor === '') { 
+            if (!Number.isInteger($scope.newOutcome.goalsFor)) {    
                 alert("Please enter the number of goals for."); 
-            } else if (!$scope.newOutcome.goalsAgainst || $scope.newOutcome.goalsAgainst === '') { 
+            } else if (!Number.isInteger($scope.newOutcome.goalsAgainst)) {    
                 alert("Please enter the number of goals against.");
-            } else {
-                if ($scope.game.outcome === undefined)
-                    $scope.results.goalsForTotal += $scope.newOutcome.goalsFor;
-                    $scope.results.goalsAgainstTotal += $scope.newOutcome.goalsAgainst;
-                    $scope.results.outcomesTotal ++;
+            } else if ($scope.game.outcome === undefined) {
+                
+                if ($scope.newOutcome.goalsFor > $scope.newOutcome.goalsAgainst) {
+                    $scope.newOutcome.result = "Win";
+                    
+                    // $scope.goalsForTotal = 100;
+                    // $scope.goalsAgainstTotal = 50;
+                    // $scope.outcomesTotal = 2;
+                    
+                    $scope.goalsForTotal = $scope.goalsForTotal + $scope.newOutcome.goalsFor;
+                    $scope.goalsAgainstTotal = $scope.goalsAgainstTotal + $scope.newOutcome.goalsAgainst;
+                    $scope.outcomesTotal = $scope.outcomesTotal + 1;
+                    $scope.goalsForAverage = ($scope.goalsForTotal / $scope.outcomesTotal).toFixed(1);
+                    $scope.goalsAgainstAverage = ($scope.goalsAgainstTotal / $scope.outcomesTotal).toFixed(1);
+                    
+                    $scope.results.push($scope.goalsForTotal);
+                    $scope.results.push($scope.goalsAgainstTotal);
+                    $scope.results.push($scope.outcomesTotal);
+
+                    console.log($scope.goalsForTotal);
+                    console.log($scope.goalsAgainstTotal);
+                    console.log($scope.outcomesTotal + 1);
+                    
+                    console.log($scope.newOutcome.goalsFor);
+                    console.log($scope.newOutcome.goalsAgainst);
+
+                    console.log($scope.goalsForAverage);
+                    console.log($scope.goalsAgainstAverage);
                     
                     $scope.game.outcome = [];
                     $scope.game.outcome.pop();
                     $scope.game.outcome.push($scope.newOutcome);
-
-                    console.log($scope.newOutcome);
-                    console.log($scope.results);
-                    
-                    console.log($scope.results.goalsForTotal);
-                    console.log($scope.results.goalsForAverage);
-
-                    console.log($scope.results.goalsAgainstTotal);
-                    console.log($scope.results.goalsAgainstAverage);
-                    
-                    console.log($scope.results.outcomesTotal);
-
                     $scope.newOutcome = [];
-                    alert("Success! Outcome added to game!");
                     $scope.outcomeHide = true;
+                    
+                } else if ($scope.newOutcome.goalsFor < $scope.newOutcome.goalsAgainst) {
+                    $scope.newOutcome.result = "Loss";
+                    $scope.game.outcome = [];
+                    $scope.game.outcome.pop();
+                    $scope.game.outcome.push($scope.newOutcome);
+                    $scope.newOutcome = [];
+                    $scope.outcomeHide = true;
+                    
+                } else if ($scope.newOutcome.goalsFor === $scope.newOutcome.goalsAgainst) {
+                    $scope.newOutcome.result = "Tie";
+                    $scope.game.outcome = [];
+                    $scope.game.outcome.pop();
+                    $scope.game.outcome.push($scope.newOutcome);
+                    $scope.newOutcome = [];
+                    $scope.outcomeHide = true;
+                    
+                }
             }
         }; //end $scope.addOutcome
-        
-        // $scope.hideOutcome = function() {
-        //     console.log('The outcome form will be hidden.');  
-        // };
-        
-        // document.getElementById("outcome").onsubmit = function() {hideOutcome()};
-        // function hideOutcome() {
-        //     $scope.outcomeHide = true;
-        // }
         
     } //end function
 ]) //end GameCtrl
 
-.controller('StatsCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact', 'resultsFact', 'UserService', '$window',
-    function($scope, $state, $stateParams, $ionicHistory, gamesFact, resultsFact, UserService, $window) {
+// .controller('StatsCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact', 'resultsFact', 'UserService', '$window',
+//     function($scope, $state, $stateParams, $ionicHistory, gamesFact, resultsFact, UserService, $window) {
         
-        $scope.results = resultsFact.resultsArray;
-        $scope.goalsForTotal = $scope.results.goalsForTotal;
-        $scope.goalsAgainst = $scope.results.goalsAgainstTotal;
+//         $scope.results = resultsFact.resultsArray;
+//         $scope.goalsForTotal = $scope.results.goalsForTotal;
+//         $scope.goalsAgainst = $scope.results.goalsAgainstTotal;
         
-        $scope.goalsForAverage = $scope.results.goalsForTotal / $scope.results.outcomesTotal;
-        $scope.goalsAgainstAverage = $scope.results.goalsAgainstTotal / $scope.results.outcomesTotal;
-        
-        $scope.getStats = function() {
-          console.log($scope.goalsForTotal); 
-          console.log($scope.goalsAgainstTotal);
-        };
-    }
-])
+//         $scope.goalsForAverage = $scope.results.goalsForTotal / $scope.results.outcomesTotal;
+//         $scope.goalsAgainstAverage = $scope.results.goalsAgainstTotal / $scope.results.outcomesTotal;
+//     }
+// ])
 
 .controller('OppsCtrl', ['$scope', '$state', '$stateParams', '$ionicHistory', 'gamesFact', 'oppsFact',
     function($scope, $state, $stateParams, $ionicHistory, gamesFact, oppsFact) {
@@ -284,16 +308,3 @@ angular.module('starter.controllers', [])
         }); 
     }
 ]);
-
-
-/*
-        $scope.getResult = function(form) {
-            if ($scope.game.notes.goalsFor > $scope.game.notes.goalsAgainst) {
-                $scope.game.notes.result = "Win";
-            } else if ($scope.game.notes.goalsFor < $scope.game.notes.goalsAgainst) {
-                $scope.game.notes.result = "Loss";
-            } else if ($scope.game.notes.goalsFor === $scope.game.notes.goalsAgainst) {
-                $scope.game.notes.result = "Tie";
-            }
-        }; //end $scope.getResult 
-*/

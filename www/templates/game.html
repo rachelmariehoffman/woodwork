@@ -6,7 +6,11 @@
     </ion-nav-buttons>    
     <ion-content class="padding">
         <img src="img/ww_logo.png">
-
+        Total Goals For: {{goalsForTotal}}<br>
+        Total Goals Against: {{goalsAgainstTotal}}<br>
+        Total Outcomes: {{outcomesTotal}}<br>
+        Average Goals For: {{goalsForAverage}}<br>
+        Average Goals Against: {{goalsAgainstAverage}}<br>
         <div class="card">
         	<ion-list>
         		<ion-item>
@@ -35,25 +39,13 @@
         
         <form name="outcome" novalidate ng-submit="addOutcome(outcome)" id="outcome" ng-hide="outcomeHide">
             <div class="list card">
-                <label class="item item-select item-icon-left">
-                    <div class="input-label">
-                        <i class="icon ion-trophy"></i>
-                        Select a Result
-                    </div>
-                    <select ng-model="newOutcome.result" ng-init="$first">
-                        <option value="{{item.state}}" ng-selected="$first">
-                        <option value="Win">Win</option>
-                        <option value="Loss">Loss</option>
-                        <option value="Tie">Tie</option>
-                    </select>
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-football"></i>
+                    <input name="goalsFor" type="number" min="0" placeholder="Goals For" ng-model="newOutcome.goalsFor" required></input>
                 </label>
                 <label class="item item-icon-left">
                     <i class="icon ion-ios-football"></i>
-                    <input name="goalsFor" type="number" placeholder="Goals For" ng-model="newOutcome.goalsFor" required></input>
-                </label>
-                <label class="item item-icon-left">
-                    <i class="icon ion-ios-football"></i>
-                    <input name="goalsAgainst" type="number" placeholder="Goals Against" ng-model="newOutcome.goalsAgainst" required></input>
+                    <input name="goalsAgainst" type="number" min="0" placeholder="Goals Against" ng-model="newOutcome.goalsAgainst" required></input>
                 </label>
             </div>
             <button class="button button-block button-green" type="submit">
