@@ -163,9 +163,9 @@ angular.module('starter.controllers', [])
         $scope.newOutcome = [];
         
         $scope.results = resultsFact.resultsArray;
-        $scope.goalsForTotal = 20;
-        $scope.goalsAgainstTotal = 10;
-        $scope.outcomesTotal = 3;
+        $scope.goalsForTotal = 0;
+        $scope.goalsAgainstTotal = 0;
+        $scope.outcomesTotal = 0;
         $scope.goalsForAverage = ($scope.goalsForTotal / $scope.outcomesTotal).toFixed(1);
         $scope.goalsAgainstAverage = ($scope.goalsAgainstTotal / $scope.outcomesTotal).toFixed(1);
         
