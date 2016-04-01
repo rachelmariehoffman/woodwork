@@ -4,7 +4,7 @@
             <i class="icon ion-log-out dark"></i>
         </button>
     </ion-nav-buttons>
-    <ion-content class="padding">
+    <ion-content class="padding has-footer">
         <img src="img/ww_logo.png">
         <br><br>
         
@@ -19,11 +19,11 @@
                 <div class="item item-text-wrap row">
                     <div class="col col-50">
                         <div class="subtitle">Goals For: <br></div>
-                        {{results.goalsForTotal}}
+                        {{result.goalsForTotal}}
                         </div>
                     <div class="col col-50">
                         <div class="subtitle">Goals Against: <br></div>
-                        {{results.goalsAgainstTotal}}
+                        {{result.goalsAgainstTotal}}
                     </div>
                 </div>
             </div>
@@ -42,40 +42,40 @@
                     </div>
                 </div>
             </div>
-            <!--<br>-->
-            <!--<div class="title">-->
-            <!--    Individual Statistics<br>-->
-            <!--</div>-->
-            <!--<div class="card">-->
-            <!--    <div class="item item-divider card-title">-->
-            <!--        Totals-->
-            <!--    </div>-->
-            <!--    <div class="item item-text-wrap row">-->
-            <!--        <div class="col col-50">-->
-            <!--            <div class="subtitle">Goals: <br></div>-->
-            <!--            n/a-->
-            <!--        </div>-->
-            <!--        <div class="col col-50">-->
-            <!--            <div class="subtitle">Assists: <br></div>-->
-            <!--            n/a-->
-            <!--        </div>-->
-            <!--    </div>-->
-            <!--</div>-->
-            <!--<div class="card">-->
-            <!--    <div class="item item-divider card-title">-->
-            <!--        Averages-->
-            <!--    </div>-->
-            <!--    <div class="item item-text-wrap row">-->
-            <!--        <div class="col col-50">-->
-            <!--            <div class="subtitle">Goals: <br></div>-->
-            <!--            BLANK/game-->
-            <!--        </div>-->
-            <!--        <div class="col col-50">-->
-            <!--            <div class="subtitle">Assists: <br></div>-->
-            <!--            BLANK/game-->
-            <!--        </div>-->
-            <!--    </div>-->
-            <!--</div>-->
+            <br>
+            <div class="title">
+                Individual Statistics<br>
+            </div>
+            <div class="card">
+                <div class="item item-divider card-title">
+                    Totals
+                </div>
+                <div class="item item-text-wrap row">
+                    <div class="col col-50">
+                        <div class="subtitle">Goals: <br></div>
+                        {{result.goalsScoredTotal}}
+                    </div>
+                    <div class="col col-50">
+                        <div class="subtitle">Assists: <br></div>
+                        {{result.assistsMadeTotal}}
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="item item-divider card-title">
+                    Averages
+                </div>
+                <div class="item item-text-wrap row">
+                    <div class="col col-50">
+                        <div class="subtitle">Goals: <br></div>
+                        {{goalsScoredAverage}}/game
+                    </div>
+                    <div class="col col-50">
+                        <div class="subtitle">Assists: <br></div>
+                        {{assistsMadeAverage}}/game
+                    </div>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>

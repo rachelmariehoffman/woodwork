@@ -1,0 +1,22 @@
+<ion-view view-title="Add Team">
+    <ion-nav-buttons side="right">
+        <button class="button" ng-click="logout()">
+            <i class="icon ion-log-out dark"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="padding has-footer">
+        <img src="img/ww_logo.png">
+        
+        <form name="opp" novalidate ng-submit="addOpp(opp)">
+            <div class="list card">
+                <label class="item item-icon-left">
+                    <i class="icon ion-ios-people"></i>
+                    <input name="team" type="text" placeholder="Team Name" ng-model="newOpp.name" required></input>
+                </label>
+            </div>
+            <button class="button button-block button-green" type="submit">
+                Add Opponent
+            </button>
+        </form>
+    </ion-content>
+</ion-view>

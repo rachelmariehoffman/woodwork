@@ -24,11 +24,26 @@
     <script src="js/app.js"></script>
   </head>
   
-  <body ng-app="starter">
+  <body ng-app="starter" ng-controller="LobbyCtrl">
     <ion-nav-bar class="header-green">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
+    
     <ion-nav-view></ion-nav-view>
+    
+    <ion-footer-view ng-hide='hideFooter'>
+        <div class="bar-positive header-green tabs app-tabs">
+            <a class="tab-item" ng-click="scheduleGo()">
+                <i class="icon ion-calendar button button-clear"></i>
+            </a>
+            <a class="tab-item" ng-click="opponentsGo()">
+                <i class="icon ion-ios-people button button-clear"></i>
+            </a>
+            <a class="tab-item" ng-click="statisticsGo()">
+                <i class="icon ion-ios-football button button-clear"></i>
+            </a>
+        </div>
+    </ion-footer-view>
   </body>
 </html>

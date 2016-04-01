@@ -4,13 +4,8 @@
             <i class="icon ion-log-out dark"></i>
         </button>
     </ion-nav-buttons>    
-    <ion-content class="padding">
+    <ion-content class="padding has-footer">
         <img src="img/ww_logo.png">
-        Total Goals For: {{goalsForTotal}}<br>
-        Total Goals Against: {{goalsAgainstTotal}}<br>
-        Total Outcomes: {{outcomesTotal}}<br>
-        Average Goals For: {{goalsForAverage}}<br>
-        Average Goals Against: {{goalsAgainstAverage}}<br>
         <div class="card">
         	<ion-list>
         		<ion-item>
@@ -27,7 +22,8 @@
         
         <div ng-repeat="outcome in game.outcome" class="game-notes">
             <br> <div class="game-result">{{outcome.result}}</div>
-            {{outcome.goalsFor}} - {{outcome.goalsAgainst}}
+            {{outcome.goalsFor}} - {{outcome.goalsAgainst}}<br>
+            {{outcome.goalsScored}} goals, {{outcome.assistsMade}} assists
         </div>
 
         <div ng-repeat="note in game.notes" class="game-notes">
@@ -46,6 +42,16 @@
                 <label class="item item-icon-left">
                     <i class="icon ion-ios-football"></i>
                     <input name="goalsAgainst" type="number" min="0" placeholder="Goals Against" ng-model="newOutcome.goalsAgainst" required></input>
+                </label>
+            </div>
+            <div class="list card">
+                <label class="item item-icon-left">
+                    <i class="icon ion-ribbon-b"></i>
+                    <input name="goalsScored" type="number" min="0" placeholder="Goals Scored" ng-model="newOutcome.goalsScored" required></input>
+                </label>
+                <label class="item item-icon-left">
+                    <i class="icon ion-ribbon-b"></i>
+                    <input name="assistsMade" type="number" min="0" placeholder="Assists Made" ng-model="newOutcome.assistsMade" required></input>
                 </label>
             </div>
             <button class="button button-block button-green" type="submit">
